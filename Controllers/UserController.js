@@ -1,15 +1,12 @@
-const mysql = require('mysql');
 const express = require('express');
-const bodyparser = require('body-parser');
+const cryptoJS = require('crypto-js');
 const mysqlConnection = require('../Database/Database').mysqlConnection;
+const validator = require('../Middleware/Validators/UserRegisterValidator').UserRegisterValidator;
+const calorie = require('../Counters/CalorieCounter').CalorieCalculator;
 var jwt = require('jsonwebtoken');
 
-var token;
-var app = express();
-
-app.use(bodyparser.json());
-app.listen(3000);
-
+const secret = "kacsakacsa";
+const router = express.Router();
 
 mysqlConnection.connect((err) => {
     if (!err)
@@ -18,43 +15,44 @@ mysqlConnection.connect((err) => {
        console.log('DB connection failed \n Error : ' + JSON.stringify(err, undefined, 2));
 });
 
-app.get('/users', (req, res) => {
+router.get('/', (req, res) => {
     mysqlConnection.query('SELECT * FROM users', (err, rows, fields) => {
         if (!err)
-            res.send(rows);
+            res.json(rows);
         else
-            console.log(err);
+            res.json(err);
     })
 });
 
-app.post('/users', (req, res) => {
+router.post('/', validator, (req, res) => {
+    req.body.Password = cryptoJS.SHA256(req.body.Password);
     mysqlConnection.query('INSERT INTO users SET ?', req.body, (err, rows, fields) => {
         if (!err)
-            res.send(rows);
+            res.json(rows);
         else
-            console.log(err);
+            res.json(err);
     })
 });
 
-app.post('/login', (req, res) => {
+router.post('/login', (req, res) => {
     var email = req.body.Email;
-    var password = req.body.Password;
+    var password = cryptoJS.SHA256(req.body.Password).toString();
 
     mysqlConnection.query('SELECT * FROM users WHERE email = ?', [email], function (err, rows, fields) {
         if (rows.length > 0) {
             if (rows[0].Password == password) {
-
-                res.send('Sikeres bejelentkezés!');
-                console.log('Sikeres bejelentkezés!');
+                var token = jwt.sign({
+                    exp: Math.floor(Date.now() / 1000) + (60 * 60),
+                    data: rows[0].Id
+                  }, secret);
+                res.json({token: token});
             } else {
-                res.send('Email jelszó páros nem jó!');
-                console.log('Email jelszó páros nem jó!');
-                res.send(rows[0].Password);
-                console.log(password);
+                res.status(401).json({Error: "Email jelszó páros nem jó!" });
             }
         } else {
-            res.send('Nincs ilyen email!');
-            console.log('Nincs ilyen email!');
+            res.status(401).json({Error: "Nincs ilyen email!" });
         }
     });
 });
+
+module.exports = router;
