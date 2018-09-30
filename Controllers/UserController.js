@@ -12,7 +12,7 @@ mysqlConnection.connect((err) => {
     if (!err)
         console.log('DB connection succeded.');
     else
-       console.log('DB connection failed \n Error : ' + JSON.stringify(err, undefined, 2));
+        console.log('DB connection failed \n Error : ' + JSON.stringify(err, undefined, 2));
 });
 
 router.get('/', (req, res) => {
@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
     })
 });
 
-router.post('/', validator, (req, res) => {
+router.post('/', validator, calorie, (req, res) => {
     req.body.Password = cryptoJS.SHA256(req.body.Password);
     mysqlConnection.query('INSERT INTO users SET ?', req.body, (err, rows, fields) => {
         if (!err)
@@ -44,13 +44,13 @@ router.post('/login', (req, res) => {
                 var token = jwt.sign({
                     exp: Math.floor(Date.now() / 1000) + (60 * 60),
                     data: rows[0].Id
-                  }, secret);
-                res.json({token: token});
+                }, secret);
+                res.json({ token: token });
             } else {
-                res.status(401).json({Error: "Email jelszó páros nem jó!" });
+                res.status(401).json({ Error: "Email jelszó páros nem jó!" });
             }
         } else {
-            res.status(401).json({Error: "Nincs ilyen email!" });
+            res.status(401).json({ Error: "Nincs ilyen email!" });
         }
     });
 });
