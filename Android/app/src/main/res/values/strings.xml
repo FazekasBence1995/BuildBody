@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">BuildBody</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="NameRegister">Név</string>
+    <string name="EmailRegister">Email</string>
+    <string name="PasswordRegister">Jelszó</string>
+    <string name="FemaleRegister">Nő</string>
+    <string name="MaleRegister">Férfi</string>
+    <string name="LowRegister">Könnyű</string>
+    <string name="MediumRegister">Közepes</string>
+    <string name="HighRegister">Nehéz</string>
+    <string name="AgeRegister">Életkor</string>
+    <string name="WeightRegister">Súly</string>
+    <string name="HeightRegister">Magasság</string>
+    <string name="ApplyRegister">Regisztráció</string>
+    <string name="CancelRegister">Mégsem</string>
+    <string name="LoginButton">Bejelentkezés</string>
+    <string name="RegistrationButton">Regisztráció</string>
+    <string name="EmailLogin">Email</string>
+    <string name="PasswordLogin">Jelszó</string>
+
+    <string name="pref_acces_token">Preference_acces_token</string>
+</resources>
