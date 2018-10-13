@@ -137,19 +137,8 @@ public class RegistrationFragment extends Fragment {
         apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: EZT FÜGVÉNYBE CSINÁLD ITT CSAK HÍVD MEG
-                nameTextInputLayout.setError("");
-                emailTextInputLayout.setError("");
-                passwordTextInputLayout.setError("");
-                ageTextInputLayout.setError("");
-                weightTextInputLayout.setError("");
-                heightTextInputLayout.setError("");
-
-                if(name.getText().toString().equals("")){
-                    nameTextInputLayout.setError("A név nem lehet üres!");
-                }
-                if(!isEmailValid(email.getText().toString())){
-                    emailTextInputLayout.setError("Nem jó email formátum!");
+                if(registrationValidator()){
+                    performRegistration();
                 }
             }
         });
@@ -202,12 +191,11 @@ public class RegistrationFragment extends Fragment {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if(response.isSuccessful()){
-
+                    registrationListener.applyPerformed();
                 }
                 else if(response.code()==403){
                     ValidationError validationError = ErrorUtil.parseError(response);
                     if(validationError.getAttributeName().equals("email")){
-                        //TODO:FENT ELKÉRNI AZ EMAILES KÖRBEVEVŐ IDJÁT ÉS SETERRORRAL BEÁLLÍTANI A HIBÁT ITT KEZELD
                         emailTextInputLayout.setError(validationError.getError());
                     }
                 }
@@ -216,6 +204,7 @@ public class RegistrationFragment extends Fragment {
             @Override
             public void onFailure(Call<User> call, Throwable t) {
                 //error json feldolgozás
+                t.printStackTrace();
             }
         });
     }
@@ -229,5 +218,74 @@ public class RegistrationFragment extends Fragment {
         super.onAttach(context);
         Activity activity = (Activity) context;
         registrationListener = (OnRegistrationListener) activity;
+    }
+
+    public boolean checkInteger(String string){
+        boolean isInteger;
+        try {
+            int num = Integer.parseInt(string);
+            isInteger = true;
+        } catch (NumberFormatException e) {
+            isInteger = false;
+        }
+        return  isInteger;
+    }
+
+    public boolean registrationValidator(){
+        nameTextInputLayout.setError("");
+        emailTextInputLayout.setError("");
+        passwordTextInputLayout.setError("");
+        ageTextInputLayout.setError("");
+        weightTextInputLayout.setError("");
+        heightTextInputLayout.setError("");
+
+        boolean succes = true;
+
+        if(name.getText().toString().equals("")){
+            nameTextInputLayout.setError("A név nem lehet üres!");
+            succes = false;
+        }
+
+        if(email.getText().toString().equals("")){
+            emailTextInputLayout.setError("Az email nem lehet üres!");
+            succes = false;
+        }
+        else if(!isEmailValid(email.getText().toString())){
+            emailTextInputLayout.setError("Nem jó email formátum!");
+            succes = false;
+        }
+
+        if(password.getText().toString().equals("")) {
+            passwordTextInputLayout.setError("A jelszó nem lehet üres!");
+            succes = false;
+        }
+
+        if(age.getText().toString().equals("")){
+            ageTextInputLayout.setError("Az életkor nem lehet üres!");
+            succes = false;
+        }
+        else if(!checkInteger(age.getText().toString())){
+            ageTextInputLayout.setError("Az életkort nem egész számban adta meg!");
+            succes = false;
+        }
+
+        if(weight.getText().toString().equals("")){
+            weightTextInputLayout.setError("A súly nem lehet üres!");
+            succes = false;
+        }
+        else if(!checkInteger(weight.getText().toString())){
+            weightTextInputLayout.setError("A súlyt nem egész számban adta meg!");
+            succes = false;
+        }
+
+        if(height.getText().toString().equals("")){
+            heightTextInputLayout.setError("A magasság nem lehet üres!");
+            succes = false;
+        }
+        else if(!checkInteger(height.getText().toString())){
+            heightTextInputLayout.setError("A masasságot nem egész számban adta meg!");
+            succes = false;
+        }
+        return succes;
     }
 }

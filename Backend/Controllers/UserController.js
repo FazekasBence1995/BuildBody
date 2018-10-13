@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', validator, calorie, (req, res) => {
-    req.body.Password = cryptoJS.SHA256(req.body.Password);
+    req.body.password = cryptoJS.SHA256(req.body.password);
     mysqlConnection.query('INSERT INTO users SET ?', req.body, (err, rows, fields) => {
         if (!err)
             res.json(rows);
@@ -35,22 +35,22 @@ router.post('/', validator, calorie, (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-    var email = req.body.Email;
-    var password = cryptoJS.SHA256(req.body.Password).toString();
+    var email = req.body.email;
+    var password = cryptoJS.SHA256(req.body.password).toString();
 
     mysqlConnection.query('SELECT * FROM users WHERE email = ?', [email], function (err, rows, fields) {
         if (rows.length > 0) {
-            if (rows[0].Password == password) {
+            if (rows[0].password == password) {
                 var token = jwt.sign({
                     exp: Math.floor(Date.now() / 1000) + (60 * 60),
                     data: rows[0].Id
                 }, secret);
                 res.json({ token: token });
             } else {
-                res.status(401).json({ Error: "Email jelszó páros nem jó!" });
+                res.status(401).json({ error: "Email jelszó páros nem jó!" });
             }
         } else {
-            res.status(401).json({ Error: "Nincs ilyen email!" });
+            res.status(401).json({ error: "Nincs ilyen email!" });
         }
     });
 });

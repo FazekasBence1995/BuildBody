@@ -1,175 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/linearLayout"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+<android.support.constraint.ConstraintLayout
+    android:id="@+id/linearLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/nameRegisterTextInputLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/nameRegisterTextInputLayout"
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/nameRegisterTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:hint="@string/NameRegister" />
+    </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/nameRegisterTextInputEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/NameRegister" />
-        </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/emailRegisterTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameRegisterTextInputLayout">
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/emailRegisterTextInputLayout"
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/emailRegisterTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nameRegisterTextInputLayout">
+            android:inputType="textEmailAddress"
+            android:hint="@string/EmailRegister" />
+    </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/emailRegisterTextInputEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:hint="@string/EmailRegister" />
-        </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/passwordRegisterTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/emailRegisterTextInputLayout">
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/passwordRegisterTextInputLayout"
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/passwordRegisterTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="45dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/emailRegisterTextInputLayout">
+            android:hint="@string/PasswordRegister" />
+    </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/passwordRegisterTextInputEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/PasswordRegister" />
-        </android.support.design.widget.TextInputLayout>
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Biológiai Nem"
+        app:layout_constraintStart_toStartOf="@+id/passwordRegisterTextInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/passwordRegisterTextInputLayout" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Biológiai Nem"
-            app:layout_constraintStart_toStartOf="@+id/passwordRegisterTextInputLayout"
-            app:layout_constraintTop_toBottomOf="@+id/passwordRegisterTextInputLayout" />
+    <CheckBox
+        android:id="@+id/maleCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/MaleRegister"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-        <CheckBox
-            android:id="@+id/maleCheckbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/MaleRegister"
-            app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+    <CheckBox
+        android:id="@+id/femaleCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/FemaleRegister"
+        app:layout_constraintStart_toEndOf="@+id/maleCheckbox"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-        <CheckBox
-            android:id="@+id/femaleCheckbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/FemaleRegister"
-            app:layout_constraintStart_toEndOf="@+id/maleCheckbox"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aktivitási Szint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/femaleCheckbox" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Aktivitási Szint"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/femaleCheckbox" />
+    <CheckBox
+        android:id="@+id/lowCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/LowRegister"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-        <CheckBox
-            android:id="@+id/lowCheckbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/LowRegister"
-            app:layout_constraintStart_toStartOf="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+    <CheckBox
+        android:id="@+id/mediumCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/MediumRegister"
+        app:layout_constraintStart_toEndOf="@+id/lowCheckbox"
+        app:layout_constraintTop_toTopOf="@+id/lowCheckbox" />
 
-        <CheckBox
-            android:id="@+id/mediumCheckbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/MediumRegister"
-            app:layout_constraintStart_toEndOf="@+id/lowCheckbox"
-            app:layout_constraintTop_toTopOf="@+id/lowCheckbox" />
+    <CheckBox
+        android:id="@+id/highCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/HighRegister"
+        app:layout_constraintStart_toEndOf="@+id/mediumCheckbox"
+        app:layout_constraintTop_toTopOf="@+id/lowCheckbox" />
 
-        <CheckBox
-            android:id="@+id/highCheckbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/HighRegister"
-            app:layout_constraintStart_toEndOf="@+id/mediumCheckbox"
-            app:layout_constraintTop_toTopOf="@+id/lowCheckbox" />
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/ageRegisterTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lowCheckbox">
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/ageRegisterTextInputLayout"
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/ageRegisterTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lowCheckbox">
+            android:hint="@string/AgeRegister"
+            android:inputType="numberDecimal"/>
+    </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/ageRegisterTextInputEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/AgeRegister"
-                android:inputType="numberDecimal"/>
-        </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/weightRegisterTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="46dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ageRegisterTextInputLayout">
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/weightRegisterTextInputLayout"
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/weightRegisterTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="46dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ageRegisterTextInputLayout">
+            android:hint="@string/WeightRegister"
+            android:inputType="numberDecimal"/>
+    </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/weightRegisterTextInputEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/WeightRegister" />
-        </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/heightRegisterTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weightRegisterTextInputLayout">
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/heightRegisterTextInputLayout"
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/heightRegisterTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/weightRegisterTextInputLayout">
+            android:hint="@string/HeightRegister"
+            android:inputType="numberDecimal"/>
+    </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/heightRegisterTextInputEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/HeightRegister" />
-        </android.support.design.widget.TextInputLayout>
+    <Button
+        android:id="@+id/applyButton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/ApplyRegister"
+        app:layout_constraintTop_toBottomOf="@+id/heightRegisterTextInputLayout" />
 
-        <Button
-            android:id="@+id/applyButton"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text="@string/ApplyRegister"
-            app:layout_constraintTop_toBottomOf="@+id/heightRegisterTextInputLayout" />
-
-        <Button
-            android:id="@+id/cancelButton"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text="@string/CancelRegister"
-            app:layout_constraintStart_toEndOf="@+id/applyButton"
-            app:layout_constraintTop_toBottomOf="@+id/heightRegisterTextInputLayout" />
-    </android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/CancelRegister"
+        app:layout_constraintStart_toEndOf="@+id/applyButton"
+        app:layout_constraintTop_toBottomOf="@+id/heightRegisterTextInputLayout" />
+</android.support.constraint.ConstraintLayout>
