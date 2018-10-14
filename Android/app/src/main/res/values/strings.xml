@@ -20,4 +20,14 @@
     <string name="PasswordLogin">Jelszó</string>
 
     <string name="pref_acces_token">Preference_acces_token</string>
+    <string name="nameEmpty">A név nem lehet üres!</string>
+    <string name="emailEmpty">Az email nem lehet üres!</string>
+    <string name="emailFault">Nem jó email formátum!</string>
+    <string name="passwordEmpty">A jelszó nem lehet üres!</string>
+    <string name="ageEmpty">Az életkor nem lehet üres!</string>
+    <string name="ageFault">Az életkort nem egész számban adta meg!</string>
+    <string name="weightEmpty">A súly nem lehet üres!</string>
+    <string name="weightFault">A súlyt nem egész számban adta meg!</string>
+    <string name="heightEmpty">A magasság nem lehet üres!</string>
+    <string name="heightFault">A masasságot nem egész számban adta meg!</string>
 </resources>

@@ -4,7 +4,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity implements LoginFragment.OnLoginListener, RegistrationFragment.OnRegistrationListener {
-
     public static PrefConfig prefConfig;
     public static ApiInterface apiInterface;
 
@@ -29,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.OnL
     }
 
     @Override
-    public void loginPerformed(String email) {
+    public void loginPerformed() {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new WelcomeFragment()).addToBackStack(null).commit();
     }
 

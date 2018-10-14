@@ -40,17 +40,17 @@ router.post('/login', (req, res) => {
 
     mysqlConnection.query('SELECT * FROM users WHERE email = ?', [email], function (err, rows, fields) {
         if (rows.length > 0) {
-            if (rows[0].password == password) {
+            if (rows[0].Password == password) {
                 var token = jwt.sign({
-                    exp: Math.floor(Date.now() / 1000) + (60 * 60),
+                    exp: Math.floor(Date.now() / 1000) + (60 * 60 * 24 * 7),
                     data: rows[0].Id
                 }, secret);
                 res.json({ token: token });
             } else {
-                res.status(401).json({ error: "Email jelszó páros nem jó!" });
+                res.status(401).json({ error: "Email jelszó páros nem jó!", attributeName: "emailPassword" });
             }
         } else {
-            res.status(401).json({ error: "Nincs ilyen email!" });
+            res.status(401).json({ error: "Nincs ilyen email!", attributeName: "emailEmpty" });
         }
     });
 });

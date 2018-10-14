@@ -1,13 +1,11 @@
 package com.example.kowansky.buildbody;
 
-
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +16,6 @@ import android.widget.CompoundButton;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -203,7 +200,6 @@ public class RegistrationFragment extends Fragment {
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                //error json feldolgozás
                 t.printStackTrace();
             }
         });
@@ -223,7 +219,6 @@ public class RegistrationFragment extends Fragment {
     public boolean checkInteger(String string){
         boolean isInteger;
         try {
-            int num = Integer.parseInt(string);
             isInteger = true;
         } catch (NumberFormatException e) {
             isInteger = false;
@@ -242,48 +237,48 @@ public class RegistrationFragment extends Fragment {
         boolean succes = true;
 
         if(name.getText().toString().equals("")){
-            nameTextInputLayout.setError("A név nem lehet üres!");
+            nameTextInputLayout.setError(getString(R.string.nameEmpty));
             succes = false;
         }
 
         if(email.getText().toString().equals("")){
-            emailTextInputLayout.setError("Az email nem lehet üres!");
+            emailTextInputLayout.setError(getString(R.string.emailEmpty));
             succes = false;
         }
         else if(!isEmailValid(email.getText().toString())){
-            emailTextInputLayout.setError("Nem jó email formátum!");
+            emailTextInputLayout.setError(getString(R.string.emailFault));
             succes = false;
         }
 
         if(password.getText().toString().equals("")) {
-            passwordTextInputLayout.setError("A jelszó nem lehet üres!");
+            passwordTextInputLayout.setError(getString(R.string.passwordEmpty));
             succes = false;
         }
 
         if(age.getText().toString().equals("")){
-            ageTextInputLayout.setError("Az életkor nem lehet üres!");
+            ageTextInputLayout.setError(getString(R.string.ageEmpty));
             succes = false;
         }
         else if(!checkInteger(age.getText().toString())){
-            ageTextInputLayout.setError("Az életkort nem egész számban adta meg!");
+            ageTextInputLayout.setError(getString(R.string.ageFault));
             succes = false;
         }
 
         if(weight.getText().toString().equals("")){
-            weightTextInputLayout.setError("A súly nem lehet üres!");
+            weightTextInputLayout.setError(getString(R.string.weightEmpty));
             succes = false;
         }
         else if(!checkInteger(weight.getText().toString())){
-            weightTextInputLayout.setError("A súlyt nem egész számban adta meg!");
+            weightTextInputLayout.setError(getString(R.string.weightFault));
             succes = false;
         }
 
         if(height.getText().toString().equals("")){
-            heightTextInputLayout.setError("A magasság nem lehet üres!");
+            heightTextInputLayout.setError(getString(R.string.heightEmpty));
             succes = false;
         }
         else if(!checkInteger(height.getText().toString())){
-            heightTextInputLayout.setError("A masasságot nem egész számban adta meg!");
+            heightTextInputLayout.setError(getString(R.string.heightFault));
             succes = false;
         }
         return succes;
