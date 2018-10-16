@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".LoginActivity">
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/nameRegisterTextInputLayout"
@@ -20,7 +20,7 @@
             android:id="@+id/nameRegisterTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/NameRegister" />
+            android:hint="@string/nameRegister" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
-            android:hint="@string/EmailRegister" />
+            android:hint="@string/emailRegister" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -52,7 +52,7 @@
             android:id="@+id/passwordRegisterTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/PasswordRegister" />
+            android:hint="@string/passwordRegister" />
     </android.support.design.widget.TextInputLayout>
 
     <TextView
@@ -67,7 +67,7 @@
         android:id="@+id/maleCheckbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/MaleRegister"
+        android:text="@string/maleRegister"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -75,7 +75,7 @@
         android:id="@+id/femaleCheckbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/FemaleRegister"
+        android:text="@string/femaleRegister"
         app:layout_constraintStart_toEndOf="@+id/maleCheckbox"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -91,7 +91,7 @@
         android:id="@+id/lowCheckbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/LowRegister"
+        android:text="@string/lowRegister"
         app:layout_constraintStart_toStartOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -99,7 +99,7 @@
         android:id="@+id/mediumCheckbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/MediumRegister"
+        android:text="@string/mediumRegister"
         app:layout_constraintStart_toEndOf="@+id/lowCheckbox"
         app:layout_constraintTop_toTopOf="@+id/lowCheckbox" />
 
@@ -107,7 +107,7 @@
         android:id="@+id/highCheckbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/HighRegister"
+        android:text="@string/highRegister"
         app:layout_constraintStart_toEndOf="@+id/mediumCheckbox"
         app:layout_constraintTop_toTopOf="@+id/lowCheckbox" />
 
@@ -123,7 +123,7 @@
             android:id="@+id/ageRegisterTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/AgeRegister"
+            android:hint="@string/ageRegister"
             android:inputType="numberDecimal"/>
     </android.support.design.widget.TextInputLayout>
 
@@ -140,7 +140,7 @@
             android:id="@+id/weightRegisterTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/WeightRegister"
+            android:hint="@string/weightRegister"
             android:inputType="numberDecimal"/>
     </android.support.design.widget.TextInputLayout>
 
@@ -156,7 +156,7 @@
             android:id="@+id/heightRegisterTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/HeightRegister"
+            android:hint="@string/heightRegister"
             android:inputType="numberDecimal"/>
     </android.support.design.widget.TextInputLayout>
 
@@ -164,14 +164,14 @@
         android:id="@+id/applyButton"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="@string/ApplyRegister"
+        android:text="@string/applyRegister"
         app:layout_constraintTop_toBottomOf="@+id/heightRegisterTextInputLayout" />
 
     <Button
         android:id="@+id/cancelButton"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="@string/CancelRegister"
+        android:text="@string/cancelRegister"
         app:layout_constraintStart_toEndOf="@+id/applyButton"
         app:layout_constraintTop_toBottomOf="@+id/heightRegisterTextInputLayout" />
 </android.support.constraint.ConstraintLayout>

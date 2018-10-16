@@ -81,7 +81,7 @@ public class LoginFragment extends Fragment {
 
         LoginUserDto loginUserDto = new LoginUserDto(emailLogin, passwordLogin);
 
-        Call<LoginData> call = MainActivity.apiInterface.performUserLogin(loginUserDto);
+        Call<LoginData> call = LoginActivity.apiInterface.performUserLogin(loginUserDto);
 
         call.enqueue(new Callback<LoginData>() {
             @Override

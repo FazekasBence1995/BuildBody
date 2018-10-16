@@ -182,7 +182,7 @@ public class RegistrationFragment extends Fragment {
 
         User user = new User(nameHelper, emailHelper, passwordHelper, genderHelper, activityLevelHelper, ageHelper, weightHelper, heightHelper);
 
-        Call<User> call = MainActivity.apiInterface.performRegistration(user);
+        Call<User> call = LoginActivity.apiInterface.performRegistration(user);
 
         call.enqueue(new Callback<User>() {
             @Override

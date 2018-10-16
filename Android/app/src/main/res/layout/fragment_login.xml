@@ -5,7 +5,7 @@
     android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".LoginActivity">
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/emailLoginTextInputLayout"
@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
-            android:hint="@string/EmailLogin" />
+            android:hint="@string/emailLogin" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -36,7 +36,7 @@
             android:id="@+id/passwordLoginTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/PasswordLogin"
+            android:hint="@string/passwordLogin"
             android:inputType="textPassword" />
     </android.support.design.widget.TextInputLayout>
 
@@ -44,7 +44,7 @@
         android:id="@+id/loginButton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="@string/LoginButton"
+        android:text="@string/loginButton"
         app:layout_constraintEnd_toEndOf="@+id/passwordLoginTextInputLayout"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/passwordLoginTextInputLayout"
@@ -54,7 +54,7 @@
         android:id="@+id/registrationButton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="@string/RegistrationButton"
+        android:text="@string/registrationButton"
         app:layout_constraintStart_toEndOf="@+id/loginButton"
         app:layout_constraintTop_toBottomOf="@+id/passwordLoginTextInputLayout"/>
 </android.support.constraint.ConstraintLayout>

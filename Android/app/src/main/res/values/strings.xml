@@ -1,24 +1,22 @@
 <resources>
     <string name="app_name">BuildBody</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="NameRegister">Név</string>
-    <string name="EmailRegister">Email</string>
-    <string name="PasswordRegister">Jelszó</string>
-    <string name="FemaleRegister">Nő</string>
-    <string name="MaleRegister">Férfi</string>
-    <string name="LowRegister">Könnyű</string>
-    <string name="MediumRegister">Közepes</string>
-    <string name="HighRegister">Nehéz</string>
-    <string name="AgeRegister">Életkor</string>
-    <string name="WeightRegister">Súly</string>
-    <string name="HeightRegister">Magasság</string>
-    <string name="ApplyRegister">Regisztráció</string>
-    <string name="CancelRegister">Mégsem</string>
-    <string name="LoginButton">Bejelentkezés</string>
-    <string name="RegistrationButton">Regisztráció</string>
-    <string name="EmailLogin">Email</string>
-    <string name="PasswordLogin">Jelszó</string>
-
+    <string name="nameRegister">Név</string>
+    <string name="emailRegister">Email</string>
+    <string name="passwordRegister">Jelszó</string>
+    <string name="femaleRegister">Nő</string>
+    <string name="maleRegister">Férfi</string>
+    <string name="lowRegister">Könnyű</string>
+    <string name="mediumRegister">Közepes</string>
+    <string name="highRegister">Nehéz</string>
+    <string name="ageRegister">Életkor</string>
+    <string name="weightRegister">Súly</string>
+    <string name="heightRegister">Magasság</string>
+    <string name="applyRegister">Regisztráció</string>
+    <string name="cancelRegister">Mégsem</string>
+    <string name="loginButton">Bejelentkezés</string>
+    <string name="registrationButton">Regisztráció</string>
+    <string name="emailLogin">Email</string>
+    <string name="passwordLogin">Jelszó</string>
     <string name="pref_acces_token">Preference_acces_token</string>
     <string name="nameEmpty">A név nem lehet üres!</string>
     <string name="emailEmpty">Az email nem lehet üres!</string>
@@ -30,4 +28,6 @@
     <string name="weightFault">A súlyt nem egész számban adta meg!</string>
     <string name="heightEmpty">A magasság nem lehet üres!</string>
     <string name="heightFault">A masasságot nem egész számban adta meg!</string>
+    <string name="myTrainingPlan">Saját Edzéstervek</string>
+    <string name="trainings">Edzések</string>
 </resources>
