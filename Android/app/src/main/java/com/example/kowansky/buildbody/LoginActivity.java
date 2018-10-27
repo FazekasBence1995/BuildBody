@@ -1,5 +1,6 @@
 package com.example.kowansky.buildbody;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -29,7 +30,8 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.On
 
     @Override
     public void loginPerformed() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new WelcomeFragment()).addToBackStack(null).commit();
+        Intent myIntent = new Intent(this, MainActivity.class);
+        startActivity(myIntent);
     }
 
     @Override

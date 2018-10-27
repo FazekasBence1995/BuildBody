@@ -14,14 +14,16 @@
         android:layout_marginTop="160dp"
         app:layout_constraintEnd_toEndOf="@+id/passwordLoginTextInputLayout"
         app:layout_constraintStart_toStartOf="@+id/passwordLoginTextInputLayout"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColorHint="@color/white">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/emailLoginTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
-            android:hint="@string/emailLogin" />
+            android:hint="@string/emailLogin"
+            android:textColor="@color/white"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -30,14 +32,16 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailLoginTextInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/emailLoginTextInputLayout"
+        android:textColorHint="@color/white">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/passwordLoginTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/passwordLogin"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textColor="@color/white"/>
     </android.support.design.widget.TextInputLayout>
 
     <Button
