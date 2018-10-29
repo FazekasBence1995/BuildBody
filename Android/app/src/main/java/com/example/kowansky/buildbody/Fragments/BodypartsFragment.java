@@ -1,4 +1,4 @@
-package com.example.kowansky.buildbody;
+package com.example.kowansky.buildbody.Fragments;
 
 
 import android.os.Bundle;
@@ -9,9 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
+import com.example.kowansky.buildbody.BodyPart;
+import com.example.kowansky.buildbody.Adapters.BodyPartsListAdapter;
+import com.example.kowansky.buildbody.R;
 
-import retrofit2.http.Body;
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.

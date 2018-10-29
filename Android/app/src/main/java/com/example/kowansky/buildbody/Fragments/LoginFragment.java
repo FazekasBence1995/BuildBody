@@ -1,8 +1,7 @@
-package com.example.kowansky.buildbody;
+package com.example.kowansky.buildbody.Fragments;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -11,6 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.example.kowansky.buildbody.Activitys.LoginActivity;
+import com.example.kowansky.buildbody.Application.ErrorUtil;
+import com.example.kowansky.buildbody.UserInformation.LoginData;
+import com.example.kowansky.buildbody.UserInformation.LoginUserDto;
+import com.example.kowansky.buildbody.Application.PrefConfig;
+import com.example.kowansky.buildbody.R;
+import com.example.kowansky.buildbody.Application.ValidationError;
 
 import retrofit2.Call;
 import retrofit2.Callback;

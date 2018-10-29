@@ -1,4 +1,4 @@
-package com.example.kowansky.buildbody;
+package com.example.kowansky.buildbody.Application;
 
 public class ValidationError {
 

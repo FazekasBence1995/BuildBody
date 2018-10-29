@@ -1,4 +1,4 @@
-package com.example.kowansky.buildbody;
+package com.example.kowansky.buildbody.UserInformation;
 
 public class LoginUserDto {
     private String email;

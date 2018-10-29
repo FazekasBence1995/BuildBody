@@ -1,4 +1,4 @@
-package com.example.kowansky.buildbody;
+package com.example.kowansky.buildbody.Adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -9,15 +9,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.kowansky.buildbody.BodyPart;
+import com.example.kowansky.buildbody.R;
+
 import java.util.ArrayList;
 
 public class BodyPartsListAdapter extends RecyclerView.Adapter<BodyPartsListAdapter.BodyPartViewHolder> {
     private ArrayList<BodyPart> bodyParts;
     private LayoutInflater inflater;
 
+    OnBodyPartsListAdapterListener bodyPartsListAdapterListener;
+
     public BodyPartsListAdapter(Context context, ArrayList<BodyPart> bodyParts) {
         inflater = LayoutInflater.from(context);
         this.bodyParts = bodyParts;
+    }
+
+    public interface OnBodyPartsListAdapterListener{
+        public void bodyPartsApply();
     }
 
     @NonNull
@@ -41,6 +50,8 @@ public class BodyPartsListAdapter extends RecyclerView.Adapter<BodyPartsListAdap
                 //todo: mainactivitynek visszaszól kell egy új Listener
 
                 //todo: átnavigál egy új fragmentre amire majd az adatok betőltődnek és átadja a nevet(testrész nevét)
+
+                bodyPartsListAdapterListener.bodyPartsApply();
             }
         });
     }

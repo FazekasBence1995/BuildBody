@@ -1,4 +1,4 @@
-package com.example.kowansky.buildbody;
+package com.example.kowansky.buildbody.Fragments;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,6 +12,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+
+import com.example.kowansky.buildbody.Activitys.LoginActivity;
+import com.example.kowansky.buildbody.Application.ErrorUtil;
+import com.example.kowansky.buildbody.R;
+import com.example.kowansky.buildbody.UserInformation.User;
+import com.example.kowansky.buildbody.Application.ValidationError;
 
 import retrofit2.Call;
 import retrofit2.Callback;

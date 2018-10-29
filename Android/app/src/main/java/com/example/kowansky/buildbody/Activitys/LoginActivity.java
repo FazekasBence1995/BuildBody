@@ -1,8 +1,15 @@
-package com.example.kowansky.buildbody;
+package com.example.kowansky.buildbody.Activitys;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.kowansky.buildbody.Application.ApiClient;
+import com.example.kowansky.buildbody.Application.ApiInterface;
+import com.example.kowansky.buildbody.Fragments.LoginFragment;
+import com.example.kowansky.buildbody.Application.PrefConfig;
+import com.example.kowansky.buildbody.R;
+import com.example.kowansky.buildbody.Fragments.RegistrationFragment;
 
 public class LoginActivity extends AppCompatActivity implements LoginFragment.OnLoginListener, RegistrationFragment.OnRegistrationListener {
     public static PrefConfig prefConfig;

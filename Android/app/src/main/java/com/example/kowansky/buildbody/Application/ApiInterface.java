@@ -1,4 +1,8 @@
-package com.example.kowansky.buildbody;
+package com.example.kowansky.buildbody.Application;
+
+import com.example.kowansky.buildbody.UserInformation.LoginData;
+import com.example.kowansky.buildbody.UserInformation.LoginUserDto;
+import com.example.kowansky.buildbody.UserInformation.User;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

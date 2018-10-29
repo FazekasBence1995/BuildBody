@@ -1,8 +1,10 @@
-package com.example.kowansky.buildbody;
+package com.example.kowansky.buildbody.Application;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.Toast;
+
+import com.example.kowansky.buildbody.R;
 
 public class PrefConfig {
     private SharedPreferences sharedPreferences;

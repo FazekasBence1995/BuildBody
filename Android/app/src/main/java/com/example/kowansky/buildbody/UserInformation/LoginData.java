@@ -1,4 +1,4 @@
-package com.example.kowansky.buildbody;
+package com.example.kowansky.buildbody.UserInformation;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -6,5 +6,5 @@ import com.google.gson.annotations.SerializedName;
 public class LoginData {
     @SerializedName("token")
     @Expose
-    String Token;
+    public String Token;
 }
