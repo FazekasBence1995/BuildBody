@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements WelcomeFragment.O
     }
 
     @Override
-    public void bodyPartsApply() {
+    public void bodyPartsApply(String name) {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PracticesFragment()).addToBackStack(null).commit();
     }
 }

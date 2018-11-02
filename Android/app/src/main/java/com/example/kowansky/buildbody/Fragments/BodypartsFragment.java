@@ -1,6 +1,7 @@
 package com.example.kowansky.buildbody.Fragments;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 public class BodypartsFragment extends Fragment {
     BodyPartsListAdapter adapter;
     ArrayList<BodyPart> bodyParts = new ArrayList<BodyPart>();
+    BodyPartsListAdapter.OnBodyPartsListAdapterListener bodyPartsListAdapterListener;
 
     public BodypartsFragment() {
         // Required empty public constructor
@@ -34,10 +36,13 @@ public class BodypartsFragment extends Fragment {
 
         createApproach();
 
+
         RecyclerView recyclerView = view.findViewById(R.id.recyclerViewBodyParts);
         adapter = new BodyPartsListAdapter(getContext(), bodyParts);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
+
+        adapter.setBodyPartsListAdapterListener(bodyPartsListAdapterListener);
 
         return view;
     }
@@ -62,4 +67,10 @@ public class BodypartsFragment extends Fragment {
         bodyParts.add(stomach);
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        bodyPartsListAdapterListener = (BodyPartsListAdapter.OnBodyPartsListAdapterListener) context;
+    }
 }

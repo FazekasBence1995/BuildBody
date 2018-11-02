@@ -18,7 +18,7 @@ public class BodyPartsListAdapter extends RecyclerView.Adapter<BodyPartsListAdap
     private ArrayList<BodyPart> bodyParts;
     private LayoutInflater inflater;
 
-    OnBodyPartsListAdapterListener bodyPartsListAdapterListener;
+    private OnBodyPartsListAdapterListener bodyPartsListAdapterListener;
 
     public BodyPartsListAdapter(Context context, ArrayList<BodyPart> bodyParts) {
         inflater = LayoutInflater.from(context);
@@ -26,7 +26,7 @@ public class BodyPartsListAdapter extends RecyclerView.Adapter<BodyPartsListAdap
     }
 
     public interface OnBodyPartsListAdapterListener{
-        public void bodyPartsApply();
+        public void bodyPartsApply(String name);
     }
 
     @NonNull
@@ -38,20 +38,14 @@ public class BodyPartsListAdapter extends RecyclerView.Adapter<BodyPartsListAdap
 
     @Override
     public void onBindViewHolder(@NonNull BodyPartViewHolder bodyPartViewHolder, int i) {
-        BodyPart bodyPart = bodyParts.get(i);
+        final BodyPart bodyPart = bodyParts.get(i);
 
         bodyPartViewHolder.bodypartButton.setImageResource(bodyPart.getImageId());
 
         bodyPartViewHolder.constraintLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: lISTENEREN KERESZTÜL A bODYPARTFREGMENTNEK ÁTADOM A NEVÉT (BODYPART.GETNAME)
-
-                //todo: mainactivitynek visszaszól kell egy új Listener
-
-                //todo: átnavigál egy új fragmentre amire majd az adatok betőltődnek és átadja a nevet(testrész nevét)
-
-                bodyPartsListAdapterListener.bodyPartsApply();
+                bodyPartsListAdapterListener.bodyPartsApply(bodyPart.getName());
             }
         });
     }
@@ -71,5 +65,9 @@ public class BodyPartsListAdapter extends RecyclerView.Adapter<BodyPartsListAdap
             bodypartButton = (ImageView) itemView.findViewById(R.id.bodypartBt);
             constraintLayout = itemView.findViewById(R.id.constraintListElement);
         }
+    }
+
+    public void setBodyPartsListAdapterListener(OnBodyPartsListAdapterListener bodyPartsListAdapterListener){
+        this.bodyPartsListAdapterListener = bodyPartsListAdapterListener;
     }
 }
