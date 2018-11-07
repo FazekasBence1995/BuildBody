@@ -10,6 +10,6 @@
         android:id="@+id/practiceGifImageButton"
         android:layout_width="match_parent"
         android:layout_height="450dp"
-        android:src="@drawable/asdasd"/>
+        android:src="@drawable/proba"/>
 
 </android.support.constraint.ConstraintLayout>
