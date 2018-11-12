@@ -8,7 +8,7 @@ import com.example.kowansky.buildbody.Application.ApiInterface;
 import com.example.kowansky.buildbody.Adapters.BodyPartsListAdapter;
 import com.example.kowansky.buildbody.Fragments.BodypartsFragment;
 import com.example.kowansky.buildbody.Application.PrefConfig;
-import com.example.kowansky.buildbody.Fragments.PracticesFragment;
+import com.example.kowansky.buildbody.Fragments.TrainingsFragment;
 import com.example.kowansky.buildbody.R;
 import com.example.kowansky.buildbody.Fragments.WelcomeFragment;
 
@@ -37,6 +37,11 @@ public class MainActivity extends AppCompatActivity implements WelcomeFragment.O
 
     @Override
     public void bodyPartsApply(String name) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PracticesFragment()).addToBackStack(null).commit();
+        TrainingsFragment trainingsFragment = new TrainingsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("bodyPartsName",name);
+        trainingsFragment.setArguments(bundle);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, trainingsFragment).addToBackStack(null).commit();
     }
 }

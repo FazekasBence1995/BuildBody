@@ -22,8 +22,8 @@ router.post('/', validator, (req, res) => {
     })
 });
 
-router.post('/bodypart', (req, res) => {
-    var name = req.body.name;
+router.get('/bodypart', (req, res) => {
+    var name = req.query.name;
 
     mysqlConnection.query('SELECT * FROM practices WHERE name = ?', [name], function (err, rows, fields) {
         if (rows.length > 0) {

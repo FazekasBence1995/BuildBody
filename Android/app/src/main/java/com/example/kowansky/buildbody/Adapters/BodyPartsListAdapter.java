@@ -9,16 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.example.kowansky.buildbody.Activitys.MainActivity;
 import com.example.kowansky.buildbody.BodyPart;
-import com.example.kowansky.buildbody.PracticeInformation.Training;
 import com.example.kowansky.buildbody.R;
 
 import java.util.ArrayList;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class BodyPartsListAdapter extends RecyclerView.Adapter<BodyPartsListAdapter.BodyPartViewHolder> {
     private ArrayList<BodyPart> bodyParts;
@@ -51,28 +45,7 @@ public class BodyPartsListAdapter extends RecyclerView.Adapter<BodyPartsListAdap
         bodyPartViewHolder.constraintLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println(bodyPart.getName());
-
-                Training training = new Training(bodyPart.getName(), "null", "null");
-                Call<Training> call = MainActivity.apiInterface.performBodyParts(training);
-
-                call.enqueue(new Callback<Training>() {
-                    @Override
-                    public void onResponse(Call<Training> call, Response<Training> response) {
-                        if(response.isSuccessful()){
-                            Training trainings = new Training("kacsa", "kacsa", "null");
-                            trainings.setDescription(response.body().toString());
-                            System.out.println(trainings.getDescription());
-                            bodyPartsListAdapterListener.bodyPartsApply(bodyPart.getName());
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<Training> call, Throwable t) {
-                        System.out.println("itt vagyok");
-                        t.printStackTrace();
-                    }
-                });
+                bodyPartsListAdapterListener.bodyPartsApply(bodyPart.getName());
             }
         });
     }
