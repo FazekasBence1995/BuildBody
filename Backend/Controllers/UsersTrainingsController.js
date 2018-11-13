@@ -22,11 +22,11 @@ router.post('/', loginMiddleware, (req, res) => {
     })
 });
 
-router.post('/mytrainings', (req, res) => {
-    var email = req.body.email;
-    var name = req.body.name;
+router.get('/mytrainings', loginMiddleware, (req, res) => {
+    var name = req.query.name;
+    var userId = req.userId;
 
-    mysqlConnection.query('SELECT * FROM userstrainings WHERE email = ?', [email], function (err, rows, fields) {
+    mysqlConnection.query('SELECT ID, Name, URL, Description FROM userstrainings WHERE UserId = ?', userId, function (err, rows, fields) {
         if (rows.length > 0) {
             var n = rows.length;
             var answer = [];
@@ -41,6 +41,7 @@ router.post('/mytrainings', (req, res) => {
             if(answer.length == 0){
                 res.status(401).json({ error: "Nem vettél fel még a testrészhez gyakorlatot!", attributeName: "trainingEmpty" });
             } else{
+                console.log(answer);
                 res.json({ answer: answer });
             }
         }

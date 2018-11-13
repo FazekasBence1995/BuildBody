@@ -65,7 +65,6 @@ public class MyTrainingsFragment extends Fragment {
             public void onResponse(Call<ArrayList<Training>> call, Response<ArrayList<Training>> response) {
                 if (response.isSuccessful()) {
                     for (int i = 0; i < response.body().size(); i++) {
-                        //response.body().get(i).setImageId(R.drawable.proba);
                         trainings.add(response.body().get(i));
                     }
                     adapter.notifyDataSetChanged();
