@@ -45,7 +45,7 @@ router.post('/login', (req, res) => {
                     exp: Math.floor(Date.now() / 1000) + (60 * 60 * 24 * 7),
                     data: rows[0].Id
                 }, secret);
-                res.json({ token: token });
+                res.json({ token: token, calorie: rows[0].Calorie });
             } else {
                 res.status(401).json({ error: "Email jelszó páros nem jó!", attributeName: "emailPassword" });
             }

@@ -6,6 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".Activitys.MainActivity">
 
+    <TextView
+        android:id="@+id/calorieTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:textColor="@color/white"/>
+
     <Button
         android:id="@+id/myTrainingPlan"
         android:layout_width="0dp"

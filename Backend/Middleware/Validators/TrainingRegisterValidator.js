@@ -1,7 +1,7 @@
 const validator = require('validator');
 const mysqlConnection = require('../../Database/Database').mysqlConnection;
 
-function PracticeRegisterValidator(req, res, next) {
+function TrainingRegisterValidator(req, res, next) {
 
     var fault = false;
 
@@ -26,4 +26,4 @@ function PracticeRegisterValidator(req, res, next) {
 
 }
 
-module.exports = { PracticeRegisterValidator: PracticeRegisterValidator };
+module.exports = { TrainingRegisterValidator: TrainingRegisterValidator };

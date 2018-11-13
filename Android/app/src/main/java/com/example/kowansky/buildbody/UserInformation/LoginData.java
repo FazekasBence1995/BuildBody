@@ -6,5 +6,25 @@ import com.google.gson.annotations.SerializedName;
 public class LoginData {
     @SerializedName("token")
     @Expose
-    public String Token;
+    public String token;
+
+    @SerializedName("calorie")
+    @Expose
+    public String calorie;
+
+    public String getToken() {
+        return token;
+    }
+
+    public String getCalorie() {
+        return calorie;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public void setCalorie(String calorie) {
+        this.calorie = calorie;
+    }
 }

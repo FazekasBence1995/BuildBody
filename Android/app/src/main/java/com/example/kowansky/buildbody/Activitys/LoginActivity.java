@@ -36,8 +36,11 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.On
     }
 
     @Override
-    public void loginPerformed() {
+    public void loginPerformed(String token, String calorie, String email) {
         Intent myIntent = new Intent(this, MainActivity.class);
+        myIntent.putExtra("token", token);
+        myIntent.putExtra("calorie", calorie);
+        myIntent.putExtra("email", email);
         startActivity(myIntent);
     }
 

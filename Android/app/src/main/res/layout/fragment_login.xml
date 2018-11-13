@@ -22,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
+            android:text="kowapapa@gmail.com"
             android:hint="@string/emailLogin"
             android:textColor="@color/white"/>
     </android.support.design.widget.TextInputLayout>
@@ -41,6 +42,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/passwordLogin"
             android:inputType="textPassword"
+            android:text="kacsakacsa"
             android:textColor="@color/white"/>
     </android.support.design.widget.TextInputLayout>
 

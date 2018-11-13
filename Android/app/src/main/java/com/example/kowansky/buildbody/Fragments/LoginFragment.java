@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +41,7 @@ public class LoginFragment extends Fragment {
 
     public interface OnLoginListener{
         public void registerPerformed();
-        public void loginPerformed();
+        public void loginPerformed(String token, String calorie, String email);
     }
 
     public LoginFragment() {
@@ -84,7 +85,7 @@ public class LoginFragment extends Fragment {
     }
 
     public void performUserLogin(){
-        String emailLogin = email.getText().toString();
+        final String emailLogin = email.getText().toString();
         String passwordLogin = password.getText().toString();
 
         LoginUserDto loginUserDto = new LoginUserDto(emailLogin, passwordLogin);
@@ -97,8 +98,8 @@ public class LoginFragment extends Fragment {
                 if(response.isSuccessful()){
                     LoginData loginData = response.body();
                     PrefConfig prefConfig = new PrefConfig(getContext());
-                    prefConfig.writeAccesToken(loginData.Token);
-                    loginListener.loginPerformed();
+                    prefConfig.writeAccesToken(loginData.token);
+                    loginListener.loginPerformed(loginData.getToken(), loginData.getCalorie(), emailLogin);
                 }
                 else if(response.code()==401){
                     ValidationError validationError = ErrorUtil.parseError(response);
