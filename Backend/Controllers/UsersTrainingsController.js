@@ -1,9 +1,10 @@
 const express = require('express');
 const mysqlConnection = require('../Database/Database').mysqlConnection;
+const loginMiddleware = require('../Middleware/LoginMiddleware').LoginMiddleware;
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/', loginMiddleware, (req, res) => {
     mysqlConnection.query('SELECT * FROM userstrainings', (err, rows, fields) => {
         if (!err)
             res.json(rows);
@@ -12,15 +13,14 @@ router.get('/', (req, res) => {
     })
 });
 
-router.post('/', (req, res) => {
-    mysqlConnection.query('INSERT INTO userstrainings SET ?', req.body, (err, rows, fields) => {
+router.post('/', loginMiddleware, (req, res) => {
+    mysqlConnection.query('INSERT INTO userstrainings SET ?', {UserId: req.userId, ...req.body}, (err, rows, fields) => {
         if (!err)
-            res.json("kacsa");
+            res.json(rows);
         else
             res.json(err);
     })
 });
-
 
 router.post('/mytrainings', (req, res) => {
     var email = req.body.email;

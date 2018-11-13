@@ -14,13 +14,10 @@ public class Training {
     @Expose
     private String description;
 
-    private int imageId;
-
-    public Training(String name, String url, String description, int imageId) {
+    public Training(String name, String url, String description) {
         this.name = name;
         this.url = url;
         this.description = description;
-        this.imageId = imageId;
     }
 
     public String getName() {
@@ -45,13 +42,5 @@ public class Training {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public int getImageId() {
-        return imageId;
-    }
-
-    public void setImageId(int imageId) {
-        this.imageId = imageId;
     }
 }

@@ -25,5 +25,8 @@ public interface ApiInterface {
     Call<ArrayList<Training>> performBodyParts(@Query("name") String name);
 
     @POST("/userstrainings")
-    Call<String> performUsersTrainingsRegistration(@Body String email, Training training);
+    Call<Void> performUsersTrainingsRegistration(@Body Training training, @Header("Authorization") String token);
+
+    @GET("/userstrainings/mytrainings")
+    Call<ArrayList<Training>> performGetMyTrainings(@Query("name") String name, @Header("Authorization") String token);
 }

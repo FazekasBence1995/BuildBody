@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.kowansky.buildbody.BodyPart;
+import com.example.kowansky.buildbody.Fragments.BodypartsFragment;
 import com.example.kowansky.buildbody.R;
 
 import java.util.ArrayList;
@@ -17,16 +18,19 @@ import java.util.ArrayList;
 public class BodyPartsListAdapter extends RecyclerView.Adapter<BodyPartsListAdapter.BodyPartViewHolder> {
     private ArrayList<BodyPart> bodyParts;
     private LayoutInflater inflater;
+    private Boolean cameMyTrainings;
 
     private OnBodyPartsListAdapterListener bodyPartsListAdapterListener;
 
-    public BodyPartsListAdapter(Context context, ArrayList<BodyPart> bodyParts) {
+    public BodyPartsListAdapter(Context context, ArrayList<BodyPart> bodyParts, Boolean cameMyTrainings) {
         inflater = LayoutInflater.from(context);
         this.bodyParts = bodyParts;
+        this.cameMyTrainings = cameMyTrainings;
     }
 
     public interface OnBodyPartsListAdapterListener{
         public void bodyPartsApply(String name);
+        public void myBodyPartsApply(String name);
     }
 
     @NonNull
@@ -45,7 +49,11 @@ public class BodyPartsListAdapter extends RecyclerView.Adapter<BodyPartsListAdap
         bodyPartViewHolder.constraintLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bodyPartsListAdapterListener.bodyPartsApply(bodyPart.getName());
+                if(cameMyTrainings){
+                    bodyPartsListAdapterListener.myBodyPartsApply(bodyPart.getName());
+                } else{
+                    bodyPartsListAdapterListener.bodyPartsApply(bodyPart.getName());
+                }
             }
         });
     }

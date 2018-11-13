@@ -11,6 +11,7 @@ import com.example.kowansky.buildbody.Application.ApiInterface;
 import com.example.kowansky.buildbody.Adapters.BodyPartsListAdapter;
 import com.example.kowansky.buildbody.Fragments.BodypartsFragment;
 import com.example.kowansky.buildbody.Application.PrefConfig;
+import com.example.kowansky.buildbody.Fragments.MyTrainingsFragment;
 import com.example.kowansky.buildbody.Fragments.TrainingsFragment;
 import com.example.kowansky.buildbody.R;
 import com.example.kowansky.buildbody.Fragments.WelcomeFragment;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements WelcomeFragment.O
     public String token;
     public String calorie;
     public String email;
+    public Boolean cameMyTraining = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +35,6 @@ public class MainActivity extends AppCompatActivity implements WelcomeFragment.O
         calorie = getIntent().getStringExtra("calorie");
         email = getIntent().getStringExtra("email");
 
-        Log.d("email", email);
-
         WelcomeFragment welcomeFragment = new WelcomeFragment();
         Bundle bundle = new Bundle();
         bundle.putString("token", token);
@@ -46,7 +46,14 @@ public class MainActivity extends AppCompatActivity implements WelcomeFragment.O
 
     @Override
     public void myTrainingPlanPerformed() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new BodypartsFragment()).addToBackStack(null).commit();
+        cameMyTraining = true;
+
+        BodypartsFragment bodypartsFragment = new BodypartsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putBoolean("cameMyTraining", cameMyTraining);
+        bodypartsFragment.setArguments(bundle);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, bodypartsFragment).addToBackStack(null).commit();
     }
 
     @Override
@@ -62,5 +69,14 @@ public class MainActivity extends AppCompatActivity implements WelcomeFragment.O
         trainingsFragment.setArguments(bundle);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, trainingsFragment).addToBackStack(null).commit();
+    }
+
+    @Override
+    public void myBodyPartsApply(String name) {
+        MyTrainingsFragment myTrainingsFragment = new MyTrainingsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("bodyPartsName",name);
+        myTrainingsFragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, myTrainingsFragment).addToBackStack(null).commit();
     }
 }

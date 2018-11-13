@@ -5,6 +5,8 @@ const validator = require('../Middleware/Validators/UserRegisterValidator').User
 const calorie = require('../Counters/CalorieCounter').CalorieCalculator;
 var jwt = require('jsonwebtoken');
 
+
+
 const secret = "kacsakacsa";
 const router = express.Router();
 
@@ -42,7 +44,7 @@ router.post('/login', (req, res) => {
         if (rows.length > 0) {
             if (rows[0].Password == password) {
                 var token = jwt.sign({
-                    exp: Math.floor(Date.now() / 1000) + (60 * 60 * 24 * 7),
+                    exp: Math.floor(Date.now()) + (60 * 60 * 24 * 7 * 1000),
                     data: rows[0].Id
                 }, secret);
                 res.json({ token: token, calorie: rows[0].Calorie });

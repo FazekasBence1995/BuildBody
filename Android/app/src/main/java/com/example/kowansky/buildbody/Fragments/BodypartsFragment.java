@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ public class BodypartsFragment extends Fragment {
     BodyPartsListAdapter adapter;
     ArrayList<BodyPart> bodyParts = new ArrayList<BodyPart>();
     BodyPartsListAdapter.OnBodyPartsListAdapterListener bodyPartsListAdapterListener;
+    Boolean cameMyTrainings = false;
 
     public BodypartsFragment() {
         // Required empty public constructor
@@ -34,11 +36,15 @@ public class BodypartsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_bodyparts, container, false);
 
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            cameMyTrainings = bundle.getBoolean("cameMyTraining");
+        }
+
         createApproach();
 
-
         RecyclerView recyclerView = view.findViewById(R.id.recyclerViewBodyParts);
-        adapter = new BodyPartsListAdapter(getContext(), bodyParts);
+        adapter = new BodyPartsListAdapter(getContext(), bodyParts, cameMyTrainings);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
 
