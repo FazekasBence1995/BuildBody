@@ -12,9 +12,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.kowansky.buildbody.Activitys.MainActivity;
+import com.example.kowansky.buildbody.Application.ErrorUtil;
 import com.example.kowansky.buildbody.Application.PrefConfig;
+import com.example.kowansky.buildbody.Application.ValidationError;
+import com.example.kowansky.buildbody.Fragments.TrainingsFragment;
 import com.example.kowansky.buildbody.R;
 import com.example.kowansky.buildbody.Training;
 
@@ -52,7 +56,7 @@ public class TrainingsListAdapter extends RecyclerView.Adapter<TrainingsListAdap
         gifViewHolder.myAddTraingingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setUsersTrainings("android", gifs.get(i));
+                setUsersTrainings(gifs.get(i), v);
             }
         });
 
@@ -91,7 +95,7 @@ public class TrainingsListAdapter extends RecyclerView.Adapter<TrainingsListAdap
         }
     }
 
-    public void setUsersTrainings(String email, Training training){
+    public void setUsersTrainings(Training training, final View v){
         String token = prefConfig.readAccesToken();
         Call<Void> call = MainActivity.apiInterface.performUsersTrainingsRegistration(training, token);
 
@@ -100,7 +104,11 @@ public class TrainingsListAdapter extends RecyclerView.Adapter<TrainingsListAdap
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
-
+                    displayAddUsersTrainingsToast(v);
+                }
+                else if(response.code()==403){
+                    ValidationError validationError = ErrorUtil.parseError(response);
+                    Toast.makeText(v.getContext(), validationError.getError(), Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -109,5 +117,9 @@ public class TrainingsListAdapter extends RecyclerView.Adapter<TrainingsListAdap
                 t.printStackTrace();
             }
         });
+    }
+
+    public void displayAddUsersTrainingsToast(View v){
+        Toast.makeText(v.getContext(), R.string.add, Toast.LENGTH_LONG).show();
     }
 }

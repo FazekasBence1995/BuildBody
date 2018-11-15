@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,6 +66,7 @@ public class MyTrainingsFragment extends Fragment {
             public void onResponse(Call<ArrayList<Training>> call, Response<ArrayList<Training>> response) {
                 if (response.isSuccessful()) {
                     for (int i = 0; i < response.body().size(); i++) {
+                        Log.d("asd", String.valueOf(response.body().size()));
                         trainings.add(response.body().get(i));
                     }
                     adapter.notifyDataSetChanged();

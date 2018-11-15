@@ -1,6 +1,7 @@
 const express = require('express');
 const mysqlConnection = require('../Database/Database').mysqlConnection;
 const loginMiddleware = require('../Middleware/LoginMiddleware').LoginMiddleware;
+const validator = require('../Middleware/Validators/UsersTrainingsRegisterValidator').UsersTrainingsRegisterValidator;
 
 const router = express.Router();
 
@@ -13,7 +14,7 @@ router.get('/', loginMiddleware, (req, res) => {
     })
 });
 
-router.post('/', loginMiddleware, (req, res) => {
+router.post('/', loginMiddleware, validator, (req, res) => {
     mysqlConnection.query('INSERT INTO userstrainings SET ?', {UserId: req.userId, ...req.body}, (err, rows, fields) => {
         if (!err)
             res.json(rows);
@@ -41,10 +42,19 @@ router.get('/mytrainings', loginMiddleware, (req, res) => {
             if(answer.length == 0){
                 res.status(401).json({ error: "Nem vettél fel még a testrészhez gyakorlatot!", attributeName: "trainingEmpty" });
             } else{
-                console.log(answer);
-                res.json({ answer: answer });
+                res.json(answer);
             }
         }
+    });
+});
+
+
+router.post('/mytrainings', loginMiddleware, (req, res) => {
+    mysqlConnection.query('DELETE FROM userstrainings WHERE URL = ?', req.body.URL, function (err, rows, fields) {
+        if (!err)
+            res.json(rows);
+        else
+            res.json(err);
     });
 });
 

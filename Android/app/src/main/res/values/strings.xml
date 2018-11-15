@@ -35,4 +35,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="addMyTrainingPlan">Hozzáadás</string>
     <string name="myAddMyTrainingPlan">Eltávolítás</string>
+    <string name="add">Edzés hozzáadva!</string>
+    <string name="readyAdd">Ezt az edzés már felvette!</string>
+    <string name="removeTraining">Edzés eltávolítva</string>
 </resources>

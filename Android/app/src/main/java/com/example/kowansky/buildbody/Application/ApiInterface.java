@@ -29,4 +29,7 @@ public interface ApiInterface {
 
     @GET("userstrainings/mytrainings")
     Call<ArrayList<Training>> performGetMyTrainings(@Query("name") String name, @Header("Authorization") String token);
+
+    @POST("userstrainings/mytrainings")
+    Call<Void> performUsersTrainingsRemove(@Body Training training, @Header("Authorization") String token);
 }
