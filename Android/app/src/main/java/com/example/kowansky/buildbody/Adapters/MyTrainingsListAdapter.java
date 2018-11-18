@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -61,8 +62,8 @@ public class MyTrainingsListAdapter extends RecyclerView.Adapter<MyTrainingsList
             public void onClick(View v) {
                 ViewGroup container = (ViewGroup) inflater.inflate(R.layout.popup,null);
 
-                popupWindow = new PopupWindow(container,400,400,true);
-                popupWindow.showAtLocation(constraintLayout, Gravity.NO_GRAVITY,500,500);
+                popupWindow = new PopupWindow(container, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, true);
+                popupWindow.showAtLocation(constraintLayout, Gravity.NO_GRAVITY,0,225);
                 popUpTextView = container.findViewById(R.id.popUp);
                 popUpTextView.setText(gifs.get(i).getDescription());
             }
@@ -87,7 +88,7 @@ public class MyTrainingsListAdapter extends RecyclerView.Adapter<MyTrainingsList
         }
     }
 
-    public void removeUsersTrainings(Training training, final View v){
+    public void removeUsersTrainings(final Training training, final View v){
         String token = prefConfig.readAccesToken();
         Call<Void> call = MainActivity.apiInterface.performUsersTrainingsRemove(training, token);
 
@@ -97,6 +98,7 @@ public class MyTrainingsListAdapter extends RecyclerView.Adapter<MyTrainingsList
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
                     displayRemoveUsersTrainingsToast(v);
+                    removeItem(training);
                 }
             }
 
@@ -109,5 +111,10 @@ public class MyTrainingsListAdapter extends RecyclerView.Adapter<MyTrainingsList
 
     public void displayRemoveUsersTrainingsToast(View v){
         Toast.makeText(v.getContext(), R.string.removeTraining, Toast.LENGTH_LONG).show();
+    }
+
+    public void removeItem(Training training){
+        gifs.remove(training);
+        notifyDataSetChanged();
     }
 }

@@ -99,6 +99,7 @@ public class LoginFragment extends Fragment {
                     LoginData loginData = response.body();
                     PrefConfig prefConfig = new PrefConfig(getContext());
                     prefConfig.writeAccesToken(loginData.token);
+                    prefConfig.writeCalorie(loginData.calorie);
                     loginListener.loginPerformed(loginData.getToken(), loginData.getCalorie(), emailLogin);
                 }
                 else if(response.code()==401){

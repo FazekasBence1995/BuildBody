@@ -9,7 +9,7 @@
         <pl.droidsonroids.gif.GifImageButton
             android:id="@+id/trainingGifImageButton"
             android:layout_width="0dp"
-            android:layout_height="150dp"
+            android:layout_height="125dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:layout_marginLeft="8dp"
@@ -18,15 +18,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <ImageButton
             android:id="@+id/addMyTrainingPlan"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
+            android:layout_width="75dp"
+            android:layout_height="125dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:layout_marginRight="8dp"
-            android:text="@string/addMyTrainingPlan"
+            android:background="@drawable/addbutton"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>

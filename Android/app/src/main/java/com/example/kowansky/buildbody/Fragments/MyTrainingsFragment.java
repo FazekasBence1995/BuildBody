@@ -66,7 +66,6 @@ public class MyTrainingsFragment extends Fragment {
             public void onResponse(Call<ArrayList<Training>> call, Response<ArrayList<Training>> response) {
                 if (response.isSuccessful()) {
                     for (int i = 0; i < response.body().size(); i++) {
-                        Log.d("asd", String.valueOf(response.body().size()));
                         trainings.add(response.body().get(i));
                     }
                     adapter.notifyDataSetChanged();

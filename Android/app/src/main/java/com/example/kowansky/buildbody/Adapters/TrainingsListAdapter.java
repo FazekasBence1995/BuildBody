@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -65,14 +67,12 @@ public class TrainingsListAdapter extends RecyclerView.Adapter<TrainingsListAdap
             public void onClick(View v) {
                 ViewGroup container = (ViewGroup) inflater.inflate(R.layout.popup,null);
 
-                popupWindow = new PopupWindow(container,400,400,true);
-                popupWindow.showAtLocation(constraintLayout, Gravity.NO_GRAVITY,500,500);
+                popupWindow = new PopupWindow(container, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, true);
+                popupWindow.showAtLocation(constraintLayout, Gravity.NO_GRAVITY,0,225);
                 popUpTextView = container.findViewById(R.id.popUp);
                 popUpTextView.setText(gifs.get(i).getDescription());
             }
         });
-
-
     }
 
     @Override
@@ -83,7 +83,7 @@ public class TrainingsListAdapter extends RecyclerView.Adapter<TrainingsListAdap
     class TrainingViewHolder extends RecyclerView.ViewHolder{
         GifImageButton gifButton;
 
-        Button myAddTraingingsButton;
+        ImageButton myAddTraingingsButton;
 
 
         public TrainingViewHolder(@NonNull View itemView) {
