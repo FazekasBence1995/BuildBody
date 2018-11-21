@@ -39,4 +39,5 @@
     <string name="add">Edzés hozzáadva!</string>
     <string name="readyAdd">Ezt az edzés már felvette!</string>
     <string name="removeTraining">Edzés eltávolítva</string>
+    <string name="singout">Kijelentkezés</string>
 </resources>
