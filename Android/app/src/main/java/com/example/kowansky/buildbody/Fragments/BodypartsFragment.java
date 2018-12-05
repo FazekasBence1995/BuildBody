@@ -27,7 +27,7 @@ public class BodypartsFragment extends Fragment {
     Boolean cameMyTrainings = false;
 
     public BodypartsFragment() {
-        // Required empty public constructor
+        createApproach();
     }
 
     @Override
@@ -40,8 +40,6 @@ public class BodypartsFragment extends Fragment {
         if (bundle != null) {
             cameMyTrainings = bundle.getBoolean("cameMyTraining");
         }
-
-        createApproach();
 
         RecyclerView recyclerView = view.findViewById(R.id.recyclerViewBodyParts);
         adapter = new BodyPartsListAdapter(getContext(), bodyParts, cameMyTrainings);

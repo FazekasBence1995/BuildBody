@@ -9,23 +9,24 @@
         <pl.droidsonroids.gif.GifImageButton
             android:id="@+id/myTrainingGifImageButton"
             android:layout_width="0dp"
-            android:layout_height="150dp"
+            android:layout_height="125dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:layout_marginLeft="8dp"
-            android:src="@drawable/proba"
+            android:scaleType="fitXY"
+            android:background="@android:color/transparent"
             app:layout_constraintEnd_toStartOf="@id/removeMyTrainingPlan"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/removeMyTrainingPlan"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
+            android:layout_width="75dp"
+            android:layout_height="125dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:layout_marginRight="8dp"
-            android:text="@string/myAddMyTrainingPlan"
+            android:background="@drawable/deletebutton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

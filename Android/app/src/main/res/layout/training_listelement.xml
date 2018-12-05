@@ -13,7 +13,8 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:layout_marginLeft="8dp"
-            android:src="@drawable/proba"
+            android:scaleType="fitXY"
+            android:background="@android:color/transparent"
             app:layout_constraintEnd_toStartOf="@id/addMyTrainingPlan"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

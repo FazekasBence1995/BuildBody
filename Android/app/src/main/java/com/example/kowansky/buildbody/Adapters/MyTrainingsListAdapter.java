@@ -14,7 +14,9 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.kowansky.buildbody.Activitys.MainActivity;
+import com.example.kowansky.buildbody.Application.ApiClient;
 import com.example.kowansky.buildbody.Application.PrefConfig;
 import com.example.kowansky.buildbody.R;
 import com.example.kowansky.buildbody.Training;
@@ -33,9 +35,11 @@ public class MyTrainingsListAdapter extends RecyclerView.Adapter<MyTrainingsList
     private ConstraintLayout constraintLayout;
     private TextView popUpTextView;
     private PrefConfig prefConfig;
+    private Context context;
 
     public MyTrainingsListAdapter(Context context, ArrayList<Training> gifs) {
         prefConfig = new PrefConfig(context);
+        this.context = context;
         inflater = LayoutInflater.from(context);
         this.gifs = gifs;
     }
@@ -49,6 +53,9 @@ public class MyTrainingsListAdapter extends RecyclerView.Adapter<MyTrainingsList
 
     @Override
     public void onBindViewHolder(@NonNull TrainingViewHolder gifViewHolder, final int i) {
+        final String gifURL = ApiClient.GIF_URL+gifs.get(i).getUrl()+".gif";
+
+        Glide.with(context).asGif().load(gifURL).into(gifViewHolder.gifButton);
 
         gifViewHolder.myRemoveTraingingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
